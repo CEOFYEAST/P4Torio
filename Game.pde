@@ -1,26 +1,17 @@
 import java.util.*;
 
-//arraylists for every category of sprite
-ArrayList<Sprite> itemSprites = new ArrayList<Sprite>();
-ArrayList<Sprite> machineSprites = new ArrayList<Sprite>();
-
-//que to delete sprites (duh)
-ArrayList<Sprite> deleteQue = new ArrayList<Sprite>();
-
 class Game {
+  //player
+  Player player = new Player(width/2, height/2, 50, 50, 200);
+  
+  //managers
+  SpriteManager spriteManager = new SpriteManager();
+  PlaneManager planeManager = new PlaneManager();
+  KeyManager keyManager = new KeyManager();
+  
   void play(){
     background(255);
-    
-    for(Sprite s: machineSprites){
-      s.move();
-      s.render();
-    }
-    for(Sprite s: itemSprites){
-      s.move();
-      s.render();
-    }
-    
-    clearDelete();
+    spriteManager.updateSprites();
   }
   
   void config() {
@@ -28,24 +19,7 @@ class Game {
     rectMode(CENTER);
   }
   
-  void spawn(ArrayList<Sprite> addTo, Sprite toAdd){
-    addTo.add(toAdd);
-  }
-  
-  void delete(Sprite toDelete){
-    deleteQue.add(toDelete);
-  }
-  
-  void clearDelete(){
-    for(Sprite s: deleteQue){
-      itemSprites.remove(s);
-      machineSprites.remove(s);
-    }
-    deleteQue.clear();
-  }
-  
   void load(){
     config();
-    spawn(machineSprites, new Machine(height/2, width/2, 1, "south", "assets/belt-yellow.jpg"));
   }
 }

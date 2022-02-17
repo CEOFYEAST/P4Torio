@@ -5,7 +5,22 @@ abstract class AbstractSprite implements Sprite {
   color col;
   
   AbstractSprite() { }
-   AbstractSprite(int x, int y, int size, String path) {
+  AbstractSprite(int x, int y, int w, int h, color col) {
+    this.x = x; this.y = y;
+    this.size = size;
+    this.w = w; this.h = h;
+    this.col = col;
+  }
+  AbstractSprite(int x, int y, int w, int h, String path) {
+    this.x = x; this.y = y;
+    this.size = size;
+    this.w = w; this.h = h;
+    this.path = path;
+    
+    sprite = loadImage(path);
+    sprite.resize(w, h);
+  }
+  AbstractSprite(int x, int y, int size, String path) {
     this.x = x; this.y = y;
     this.size = size;
     this.w = size *  sizeMultiplier;
@@ -34,7 +49,9 @@ abstract class AbstractSprite implements Sprite {
   }
   
   
-  abstract void move();
+  void move(){
+    
+  }
   
   void render(){
     if(path != null){
