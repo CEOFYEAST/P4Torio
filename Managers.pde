@@ -38,7 +38,6 @@ class KeyManager {
       
       //handles keycodes
       switch (kc){
-        
     }
   }
 }
@@ -60,24 +59,30 @@ class PlaneManager {
 
 
 class SpriteManager {
-  //2d array containing all arrays of sprites
-  ArrayList<ArrayList<Sprite> > spritesList =  new ArrayList<ArrayList<Sprite> >() {
-    //arraylists for every category of sprite
-    ArrayList<Sprite> objectSprites = new ArrayList<Sprite>();
-    ArrayList<Sprite> functionSprites = new ArrayList<Sprite>();
-    ArrayList<Sprite> APISprites = new ArrayList<Sprite>();
-    ArrayList<Sprite> variableSprites = new ArrayList<Sprite>();
-    ArrayList<Sprite> UISprites = new ArrayList<Sprite>();
-  };
+  //arraylists for every category of sprite
+  ArrayList<Sprite> objectSprites = new ArrayList<Sprite>(); // 0
+  ArrayList<Sprite> functionSprites = new ArrayList<Sprite>(); // 1
+  ArrayList<Sprite> APISprites = new ArrayList<Sprite>(); //2
+  ArrayList<Sprite> variableSprites = new ArrayList<Sprite>(); // 3
+  ArrayList<Sprite> entitySprites = new ArrayList<Sprite>(); // 4
+  ArrayList<Sprite> UISprites = new ArrayList<Sprite>(); // 5
   
-  //que to delete sprites (duh)
+  //2d array containing all sprite array lists
+  ArrayList<ArrayList<Sprite> > spritesList =  new ArrayList<ArrayList<Sprite> >();
+  
+  //que to delete sprites 
   ArrayList<Sprite> deleteQue = new ArrayList<Sprite>();
   
+  //2d que containing arraylist to delete sprites from
+  ArrayList<ArrayList<Sprite> > listDeleteFromQue =  new ArrayList<ArrayList<Sprite> >();
+  
   SpriteManager(){
-    //spritesList.add(objectSprites);
-    //spritesList.add(functionSprites);
-    //spritesList.add(APISprites);
-    //spritesList.add(variableSprites);
+    spritesList.add(objectSprites);
+    spritesList.add(functionSprites);
+    spritesList.add(APISprites);
+    spritesList.add(variableSprites);
+    spritesList.add(entitySprites);
+    spritesList.add(UISprites);
   }
   
   void updateSprites(){
@@ -98,23 +103,15 @@ class SpriteManager {
     addTo.add(toAdd);
   }
   
-  void delete(Sprite toDelete){
+  void delete(ArrayList<Sprite> listDeleteFrom, Sprite toDelete){
     deleteQue.add(toDelete);
+    listDeleteFromQue.add(listDeleteFrom);
   }
   
   void clearDelete(){
-    //goes through every sprite list attempting to remove the sprite to be deleted from it 
-    for(ArrayList<Sprite> currentList: spritesList){
-      for(Sprite currentSprite: currentList){
-        try{
-          currentList.remove(currentSprite);
-        } catch(NullPointerException e){
-          continue;
-        }
-      }
+    for(int i = 0; i < deleteQue.size(); i++){
+      listDeleteFromQue.get(i).remove(deleteQue.get(i));
     }
-   
-    deleteQue.clear();
   }
 }
 

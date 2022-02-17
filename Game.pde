@@ -2,7 +2,7 @@ import java.util.*;
 
 class Game {
   //player
-  Player player = new Player(width/2, height/2, 50, 50, 200);
+  Player player;
   
   //managers
   SpriteManager spriteManager = new SpriteManager();
@@ -21,5 +21,7 @@ class Game {
   
   void load(){
     config();
+    player = new Player(width/2, height/2, 50, 50, 200);
+    spriteManager.spawn(spriteManager.spritesList.get(4), game.player);
   }
 }
