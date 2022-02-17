@@ -1,6 +1,7 @@
 class Player extends AbstractSprite {
   //hotbar containing paths of items
-  String[] hotbar = new String[]{"API$assets/belt-yellow.jpg", "", "", "", "", "", "", "", "", ""};
+  //String[] hotbar = new String[]{"API$assets/belt-yellow.jpg", "", "", "", "", "", "", "", "", ""};
+  String[] hotbar = new String[]{"assets/belt-yellow.jpg", "", "", "", "", "", "", "", "", ""};
   
   int speed = 3;
   

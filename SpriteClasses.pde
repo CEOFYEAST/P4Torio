@@ -3,6 +3,11 @@ class API extends AbstractSprite {
     super(x, y, size, direction, path);
   }
 }
+//class YellowBelt extends API {
+//  YellowBelt(int x, int y, String direction){
+//    super(x, y, 1, direction, "assets/belt-yellow.jpg");
+//  }
+//}
 
 
 //--------------------

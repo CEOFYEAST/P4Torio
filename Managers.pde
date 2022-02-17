@@ -48,9 +48,11 @@ class KeyManager {
 
 class PlaneManager {
   void place(int x, int y){
-    String toPlacePath = game.player.hotbar[game.keyManager.lastNumKey];
-    print(toPlacePath);
-    //game.spriteHandler.spawn(new 
+    int hotbarAccessIndex = game.keyManager.lastNumKey;
+    String toPlaceData = game.player.hotbar[hotbarAccessIndex];
+    //String toPlaceClass = toPlaceData.substring(0, toPlaceData.indexOf('$'));
+    //String toPlacePath = toPlaceData.substring(toPlaceData.indexOf('$') + 1, toPlaceData.length());
+    game.spriteManager.spawn(game.spriteManager.APISprites, new API(x, y, 1, "north", toPlaceData));
   }
 }
 
