@@ -11,7 +11,9 @@ void draw() {
 }
 
 void mouseClicked(){
-  game.planeManager.place(mouseX, mouseY);
+  game.planeManager.planePlace(mouseX, mouseY, game.player.hotbar.inventoryArray[game.keyManager.lastNumKey]);
+  game.planeManager.place(mouseX, mouseY, game.player.hotbar.inventoryArray[game.keyManager.lastNumKey]);
+  
 }
 void keyPressed() {
   game.keyManager.setKeys(key, keyCode, true);
